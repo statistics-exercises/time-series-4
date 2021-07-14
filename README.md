@@ -21,6 +21,13 @@ As we are trying to estimate a probablity density function we must sure that the
 ![](https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{\infty}f(x)\textrm{d}x=1)
 
 So the area under your final histogram should be one.  When you normalise the points in the list called counts you should thus divide by the number of points sampled and the width of the bins (`delr`).
+The estimates of the probability densities that once you have completed this procedure are plotted at the midpoints of the bins.  These midpoints can be generated using the command:
+
+````
+for i in range(nbins) : xvals[i] = (i+0.5)*delr
+````
+
+Furthermore, the probablity density function should be plotted using a line rather than a series of bars as it is a continuous function.  The probablity mass function that we have estimated in previous exercises only has non-zero values for particular discrete values of x.
 
 With all this in mind, for this exercise I want you to estimate the probablity density function for the exponential random variable by sampling.   The one small problem that we have is that the exponential random variable can in theory take any value between 0 and infinity.  The probability of having a very high value for the random variable is, however, very small.  We can thus safely truncate the range and calculate our estimate of the probability density function over some finite range.
 

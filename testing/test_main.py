@@ -28,4 +28,4 @@ axislabels=["Random variable value", "Probability"]
 
 class UnitTests(unittest.TestCase) :
     def test_plot(self) :
-        assert(check_plot([],exppatch=line1,explabels=axislabels,explegend=False,output=True))
+        assert(check_plot([line1],explabels=axislabels,explegend=False,output=True))
