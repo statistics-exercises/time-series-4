@@ -16,4 +16,6 @@ xvals = np.zeros(nbins)     # The midpoints of your histogram bins that are used
 
 # This draws the histogram - do not delete this code
 plt.plot( xvals, histo, 'k-')
+plt.xlabel("Random variable value")
+plt.ylabel("Probability")
 plt.savefig("myhistogram.png")

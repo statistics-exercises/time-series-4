@@ -1,7 +1,27 @@
 # Histogram for exponential random variable
 
-Having revised how to compute the median and percentiles you have perhaps already guessed what this next exercise is going to be.  Yes I would like you to estimate the probability density function for the exponential random variable by writing a function to generate this type of random variable and by repeatedly sampling the random variable by calling this function multiple times.  
+I would like you to estimate the probability density function for the exponential random variable by writing a function to generate this type of random variable and by repeatedly sampling the random variable by calling this function multiple times.  
 
-You should look back on the notes you made last week about computing the histograms for continuous random variables in order to work out how to complete this task as most of the code you need will be the same as the code that we introduced last week.  The one small problem that we have is that the exponential random variable can in theory take any value between 0 and infinity.  The probability of having a very high value for the random variable is, however, very small.  We can thus safely truncate the range and calculate our estimate of the probability density function over some finite range.
+There are two important things to bear in mind that are different when you calculate the histogram for a continuous random variable.  The first is the way that we use the `np.floor` function to describe the continuous interval into `n` discrete bins.
+If we know that the random variable is between `min` and `max` then we can work out the widths of these bins using the following python code:
+
+````
+delr = ( max - min ) / n
+````
+
+If we now generate a random variable `U` we can work out the bin that the random falls within using the following code:
+
+````
+mybin = int ( ( U - min ) / delr )
+````
+
+We can thus use the above within the normal code that we would employ to compute the histogram. Now, however, the height of the bars in the unormalized histogram are equal to the number of random variable that fall into each of the line segments of interest.  
+As we are trying to estimate a probablity density function we must sure that the function is normalised correctly so that:
+
+![](https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{\infty}f(x)\textrm{d}x=1)
+
+So the area under your final histogram should be one.  When you normalise the points in the list called counts you should thus divide by the number of points sampled and the width of the bins (`delr`).
+
+With all this in mind, for this exercise I want you to estimate the probablity density function for the exponential random variable by sampling.   The one small problem that we have is that the exponential random variable can in theory take any value between 0 and infinity.  The probability of having a very high value for the random variable is, however, very small.  We can thus safely truncate the range and calculate our estimate of the probability density function over some finite range.
 
 Please note that you must set the variable called `lamd` equal to the parameter for the exponential random variable you sample in order to pass the tests for the task.  Furthermore, you must ensure that a graph is plotted using the `plt.plot` and `plt.savefig` commands that appear at the end of the code.
