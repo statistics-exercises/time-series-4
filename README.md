@@ -5,15 +5,15 @@ I would like you to estimate the probability density function for the exponentia
 There are two important things to bear in mind that are different when you calculate the histogram for a continuous random variable.  The first is the way that we use the `np.floor` function to describe the continuous interval into `n` discrete bins.
 If we know that the random variable is between `min` and `max` then we can work out the widths of these bins using the following python code:
 
-````
+```python
 delr = ( max - min ) / n
-````
+```
 
 If we now generate a random variable `U` we can work out the bin that the random falls within using the following code:
 
-````
+```python
 mybin = int ( ( U - min ) / delr )
-````
+```
 
 We can thus use the above within the normal code that we would employ to compute the histogram. Now, however, the height of the bars in the unormalized histogram are equal to the number of random variable that fall into each of the line segments of interest.  
 As we are trying to estimate a probablity density function we must sure that the function is normalised correctly so that:
@@ -23,9 +23,9 @@ As we are trying to estimate a probablity density function we must sure that the
 So the area under your final histogram should be one.  When you normalise the points in the list called counts you should thus divide by the number of points sampled and the width of the bins (`delr`).
 The estimates of the probability densities that once you have completed this procedure are plotted at the midpoints of the bins.  These midpoints can be generated using the command:
 
-````
+```python
 for i in range(nbins) : xvals[i] = (i+0.5)*delr
-````
+```
 
 Furthermore, the probablity density function should be plotted using a line rather than a series of bars as it is a continuous function.  The probablity mass function that we have estimated in previous exercises only has non-zero values for particular discrete values of x.
 
