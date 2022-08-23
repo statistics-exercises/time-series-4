@@ -18,7 +18,9 @@ mybin = int ( ( U - min ) / delr )
 We can thus use the above within the normal code that we would employ to compute the histogram. Now, however, the height of the bars in the unormalized histogram are equal to the number of random variable that fall into each of the line segments of interest.  
 As we are trying to estimate a probablity density function we must sure that the function is normalised correctly so that:
 
-![](https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{\infty}f(x)\textrm{d}x=1)
+$$
+\int_{-\infty}^{\infty}f(x)\textrm{d}x=1
+$$
 
 So the area under your final histogram should be one.  When you normalise the points in the list called counts you should thus divide by the number of points sampled and the width of the bins (`delr`).
 The estimates of the probability densities that once you have completed this procedure are plotted at the midpoints of the bins.  These midpoints can be generated using the command:
